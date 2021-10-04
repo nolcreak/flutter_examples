@@ -23,16 +23,11 @@ class HomeViewController with ChangeNotifier {
         final filteredText = text.toLowerCase();
 
         _filteredJobs.addAll(
-          _jobs.where(
-            (job) => job.company!.toLowerCase().contains(filteredText) ||
-                    job.description!.toLowerCase().contains(filteredText) ||
-                    job.location!.toLowerCase().contains(filteredText) ||
-                    job.tags != null
-                ? job.tags!.contains(filteredText)
-                : false,
-          ),
+          _jobs.where((job) =>
+              job.company!.toLowerCase().contains(filteredText) ||
+              job.description!.toLowerCase().contains(filteredText) ||
+              job.location!.toLowerCase().contains(filteredText)),
         );
-
         notifyListeners();
       },
     );
